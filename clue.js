@@ -23,21 +23,38 @@ var houseRooms = [ "Dining room", "Conservatory", "Kitchen", "Study", "Library",
   "Billiard room", "Lounge", "Ballroom", "Hall", "Spa", "Living room", "Observatory",
   "Theater", "Guest house", "Patio" ];
 
+var typeOfCards = ["characters", "weapons", "houseRooms"];
+
+var caseFileConfidential = [];
 
 function randomCard (typeOfCard) {
-
+  var card;
   switch (typeOfCard) {
-    var card;
+    
     case "characters":
-      card = characters.[Math.floor(Math.random()*characters.length)];
-      return card;
+      card = characters[Math.floor(Math.random()*characters.length)];
       break;
-    case "characters":
+    case "weapons":
+      card = weapons[Math.floor(Math.random()*weapons.length)];
       break;
-    case "characters":
+    case "houseRooms":
+      card = houseRooms[Math.floor(Math.random()*houseRooms.length)];
       break;
-    default:
-      console.log("Sorry, this is not a valid type of card");
   }
-
+  return card;
 };
+
+function dealCards () {
+
+  for (var i = 0; i < typeOfCards.length; i++) {
+    caseFileConfidential.push(randomCard(typeOfCards[i]));
+  }
+  console.log("Case File Confidential Created");
+}
+
+function revealMistery () {
+  console.log("The killer is " + caseFileConfidential[0].firstName + " " + caseFileConfidential[0].lastName + " and used a " + caseFileConfidential[1].name + " in the " + caseFileConfidential[2]);
+}
+
+dealCards();
+revealMistery ();
